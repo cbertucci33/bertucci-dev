@@ -1,0 +1,21 @@
+# bertucci.dev — personal site config (GitHub Pages / Jekyll)
+title: Bertucci
+author: Carmen Bertucci
+description: >-
+  Personal site for Carmen Bertucci — AI, local models, and the stuff he's building.
+baseurl: ""            # root for custom domain (bertucci.dev); use /<repo> for project pages
+url: "https://bertucci.dev"
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: "projects"
+    values:
+      layout: project
+  - scope:
+      path: "blog"
+    values:
+      layout: post
