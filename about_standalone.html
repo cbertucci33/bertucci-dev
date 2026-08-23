@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bertucci.dev — About</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Source+Serif+4:opsz,wght@8..60,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-2);line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:var(--teal);text-decoration:none;}a:hover{color:var(--amber);}
+/* ---------- 1. DESIGN TOKENS ---------- */
+:root {
+  /* color */
+  --bg:            #0C1110;
+  --surface:       #10191C;
+  --surface-raised: #162128;
+
+  --text-1:        #E8E2D6;   /* headings, name */
+  --text-2:        #C9C3B4;   /* body */
+  --text-3:        #8D8677;   /* muted */
+
+  --amber:         #D9A441;   /* FOCUS — name, primary CTA, active choice, doorway hover (~10%) */
+  --teal:          #3E7E8F;   /* BRIDGE — nav, links, interactive paths */
+  --indigo:        #5A6CC0;   /* ATMOSPHERE — glows, field, never text */
+
+  --border:        #202A28;
+  --border-strong: #2E5F54;
+
+  --on-amber:      #1A1205;
+  --on-teal:       #F2FBFC;
+  --on-indigo:     #F4F5FC;
+
+  /* font family */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Source Serif 4', Georgia, serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  /* spacing scale */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
+
+  /* type scale (px) — READABILITY FLOOR: body >=16 mobile / 18 desktop,
+     secondary >=14, captions/labels >=12. Never go under. */
+  --fs-display: clamp(2.75rem, 7vw, 5.5rem);  /* 44-88 desktop, min 34 mobile */
+  --fs-h2:      clamp(1.9rem, 4vw, 2.75rem);   /* 30-44 */
+  --fs-h3:      clamp(1.35rem, 2.5vw, 1.75rem);/* 22-28 */
+  --fs-lead:    1.3rem;   /* 20.8 */
+  --fs-body:    1.075rem; /* 17.2 desktop */
+  --fs-sec:     1rem;     /* 16 secondary */
+  --fs-caption: 0.875rem; /* 14 */
+  --fs-mono:    0.8rem;   /* 12.8 mono label */
+
+  /* radius */
+  --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-pill: 999px;
+
+  /* z */
+  --z-nav: 100; --z-overlay: 200;
+
+  /* motion */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --dur: 180ms;
+}
+
+/* ============================================================
+   PAGE-SCOPED: ABOUT (body.pg-about)
+   Two-column collision: The Person | The Professional
+   ============================================================ */
+body.pg-about{background:#0C1110;color:#C9C3B4;min-height:100vh;padding:64px 28px 80px;font-family:var(--font-body);}
+body.pg-about .wrap{max-width:1080px;margin:0 auto;}
+body.pg-about .aback{margin-bottom:32px;}
+body.pg-about .backlink{font-family:var(--font-mono);font-size:0.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);}
+body.pg-about .backlink:hover{color:var(--amber);}
+body.pg-about .ahead{text-align:center;margin-bottom:52px;}
+body.pg-about .ahead h1{font-family:var(--font-display);font-weight:520;font-size:clamp(2.2rem,6vw,3.4rem);color:#E8E2D6;letter-spacing:-0.01em;line-height:1.05;margin-bottom:16px;}
+body.pg-about .asub{font-size:1.1rem;color:#8D8677;line-height:1.6;max-width:560px;margin:0 auto;}
+
+/* the two columns */
+body.pg-about .acolumns{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;position:relative;
+}
+/* vertical divider between the columns */
+body.pg-about .acolumns::before{
+  content:"";position:absolute;top:0;bottom:0;left:50%;
+  width:1px;background:linear-gradient(to bottom,transparent,#2E5F54 15%,#2E5F54 85%,transparent);
+}
+body.pg-about .acol{padding:0 40px;}
+body.pg-about .acol.apersonal{border-right:1px solid transparent;}
+body.pg-about .acol.aprofessional{}
+
+/* column header: icon + label */
+body.pg-about .aheadicon{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:26px;}
+body.pg-about .aico{width:38px;height:38px;fill:none;stroke:#3E7E8F;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;shape-rendering:geometricPrecision;}
+body.pg-about .aico .core{fill:currentColor;stroke:none;}
+body.pg-about .apersonal .aico,
+body.pg-about .aprofessional .aico{stroke:#D9A441;}   /* both columns = focus (amber) */
+body.pg-about .alabel{font-family:var(--font-mono);font-size:0.85rem;letter-spacing:.16em;text-transform:uppercase;color:#C9C3B4;}
+
+body.pg-about .atext p{font-size:1.1rem;line-height:1.75;color:#E8E2D6;margin-bottom:22px;}
+body.pg-about .atext .aplace{color:#E8E2D6;font-style:italic;}   /* same bright focus text as person column */
+
+/* convergence footer */
+body.pg-about .aconverge{margin-top:64px;text-align:center;}
+body.pg-about .aline{width:180px;height:1px;background:#2E5F54;margin:0 auto 24px;}
+body.pg-about .aconverge p{font-family:var(--font-display);font-weight:500;font-size:1.3rem;color:#E8E2D6;}
+body.pg-about .aconverge p span{color:#D9A441;}
+
+/* center lane: shared origin (top) + convergence (bottom) */
+body.pg-about .alane{max-width:720px;margin:0 auto;text-align:center;}
+body.pg-about .alane .alanehead{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:24px;}
+body.pg-about .alane h2{font-family:var(--font-display);font-weight:520;font-size:clamp(1.6rem,3.5vw,2.3rem);color:#E8E2D6;letter-spacing:-0.01em;}
+body.pg-about .alane .aico{stroke:#D9A441;}   /* center = focus (amber) */
+body.pg-about .alane .atext{text-align:left;}
+body.pg-about .aorigin{margin-bottom:76px;padding-bottom:60px;}
+body.pg-about .aconverge .alane{margin-bottom:44px;}
+body.pg-about .aconverge .acircle{font-family:var(--font-display);font-weight:500;font-size:1.3rem;color:#D9A441;margin-top:8px;}
+
+
+/* focus switch (Person / Both / Professional) */
+body.pg-about .afocus{display:flex;justify-content:center;gap:10px;margin-bottom:44px;flex-wrap:wrap;}
+body.pg-about .afbtn{
+  font-family:var(--font-mono);font-size:0.78rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:10px 20px;border-radius:999px;cursor:pointer;
+  background:transparent;border:1px solid var(--border);color:#8D8677;
+  transition:all var(--dur) var(--ease);
+}
+body.pg-about .afbtn:hover{border-color:var(--border-strong);color:#C9C3B4;}
+body.pg-about .afbtn.is-active{background:var(--amber);border-color:var(--amber);color:var(--on-amber);}
+
+/* focus/blur column states
+   Focused (or both): amber icon + bright focus text.
+   Blurred: cool (teal) icon + muted text, just a slight blur. */
+body.pg-about .acol{transition:opacity var(--dur) var(--ease),filter var(--dur) var(--ease);}
+body.pg-about .acol .aico,
+body.pg-about .acol .alabel,
+body.pg-about .acol .atext p{transition:color var(--dur) var(--ease),stroke var(--dur) var(--ease);}
+
+/* default / both = focus style (already amber above) */
+
+/* blurred column: cool icon + muted text + slight blur */
+body.pg-about .acol.blurred{filter:blur(1.5px);opacity:0.72;}
+body.pg-about .acol.blurred .aico{stroke:#3E7E8F;}
+body.pg-about .acol.blurred .alabel{color:#8D8677;}
+body.pg-about .acol.blurred .atext p{color:#8D8677;}
+body.pg-about .acol.blurred .atext .aplace{color:#6B6457;}
+
+/* focused column: clear focus */
+body.pg-about .acol.focused{opacity:1;filter:none;}
+body.pg-about .acol:not(.focused):not(.blurred){opacity:1;filter:none;}
+
+/* mobile: stack the columns, drop the divider */
+@media (max-width: 819px){
+  body.pg-about .acolumns{grid-template-columns:1fr;}
+  body.pg-about .acolumns::before{display:none;}
+  body.pg-about .acol{padding:0 8px;}
+  body.pg-about .acol.aprofessional{margin-top:56px;padding-top:56px;border-top:1px solid #202A28;}
+}
+
+
+</style>
+</head><body class="pg-about">
+<div class="wrap">
+  <nav class="aback"><a href="homepage.html" class="backlink">← back</a></nav>
+
+  <header class="ahead">
+    <h1>Two sides, one person.</h1>
+    <div class="asub">The life and the work, side by side — because you can't have one without the other.</div>
+  </header>
+
+  <!-- ORIGIN: the shared seed (center) -->
+  <section class="alane aorigin">
+    <div class="alanehead">
+      <svg viewBox="0 0 24 24" class="aico">
+        <rect x="5" y="6" width="14" height="12" rx="1.5"/>
+        <rect x="8" y="3" width="8" height="3" fill="none"/>
+        <circle class="core" cx="12" cy="12" r="1.6"/>
+        <circle cx="9" cy="10" r="0.9" opacity="0.7"/>
+        <circle cx="15" cy="10" r="0.9" opacity="0.7"/>
+        <circle cx="12" cy="14" r="0.9" opacity="0.7"/>
+      </svg>
+      <h2>Where it started.</h2>
+    </div>
+    <div class="atext">
+      <p>It started with a computer. I was writing BASIC on my Atari 800XL when I was a kid, making small games of my own. When we got our first home computer, I promptly took it apart — sound cards, graphics cards, upgrades, and all the Windows tweaking that came with it. I did it because I loved video games, and I wanted to play them at their best. I taught myself to build computers and to write code, all in service of that one love. It never felt like work. It was just what I did.</p>
+    </div>
+  </section>
+
+  <!-- SPLIT: two columns -->
+  <div class="acolumns">
+
+    <!-- LEFT: THE PERSON -->
+    <section class="acol apersonal">
+      <div class="aheadicon">
+        <svg viewBox="0 0 24 24" class="aico">
+          <circle class="core" cx="12" cy="12" r="1.7"/>
+          <circle cx="12" cy="6" r="1" opacity="0.7"/>
+          <circle cx="18" cy="11" r="1" opacity="0.7"/>
+          <circle cx="15" cy="18" r="1" opacity="0.7"/>
+          <circle cx="9" cy="18" r="1" opacity="0.7"/>
+          <circle cx="6" cy="11" r="1" opacity="0.7"/>
+          <path d="M 12 7.5 L 17 10.5 M 17 13.5 L 15 17.5 M 9 17.5 L 7 13.5 M 7 10.5 L 12 7.5" opacity="0.4"/>
+        </svg>
+        <span class="alabel">The Person</span>
+      </div>
+      <div class="atext">
+        <p>I come from a family of storytellers. We're a huge family — modern day bards, really — and we all talk all the time. My grandfather was my role model; I learned how to act as a man from him. I still talk to my mom and my brothers every day. That's where it all starts for me: home, family, and the stories we tell.</p>
+        <p>Home has always meant Chicago to me. I was born here, I went to college here, and I've never lived anywhere else. I'm a city boy through and through — concrete is my blood. I love being in the center of everything. I love people, but I don't like crowds. The suburbs were never for me: nothing is by you out there, everything's spread out. I could see a tiny town someday, though — somewhere with one Main Street, and I'd be right there on it. Center of a big city, or the one Main Street of a small town. Nothing in between.</p>
+        <p>And I love this city. It's got the aggressiveness and no-bullshit attitude of the east coast, but it's still warm and welcoming like the Midwest. Here, everyone is family. Some of that's my Italian roots. Some of it's just how we are.</p>
+        <p>My family is everything — and that carried over into the family I have now. My wife and my boy are my whole world. I'm truly happy for the first time in my life. And the good times come with it: I go to a lot of concerts — 500 bands easy, going back 30 years — and my wife's my best friend so we still do 5-10 shows a year, and now my boy's coming too. He loves music as much as we do; we still put records on and just listen. I've got a Blackhawks tattoo. I grew up on hockey and soccer, ran a ton of races as an adult, until my body said no. Now I ride — a road bike and an e-mountain bike. And I've been a gamer since I was a kid; I even helped build a game once.</p>
+        <p>But it wasn't always easy. I went through real loss and had a lot of growing up to do. I had to learn to forgive myself. I hit a point where I didn't recognize who I was — this passive, risk-averse version of me instead of the guy who took chances. I had to find a way to marry those two people, and it took a lot of work. I feel whole again now. I'm happy, and I'm better for the people around me.</p>
+        <p>Which brings me back to the stories. I'm the luckiest person around — I've got a habit of being in the right place at the right time, so there's a funny story behind just about everything that's ever happened to me, even the darkest stuff. And all I really care about is sharing those stories. Not to brag — to bring everyone in, the way people have gathered around a dinner sharing stories for thousands of years.</p>
+      </div>
+    </section>
+
+    <!-- RIGHT: THE PROFESSIONAL -->
+    <section class="acol aprofessional">
+      <div class="aheadicon">
+        <svg viewBox="0 0 24 24" class="aico">
+          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-24 12 12)"/>
+          <ellipse cx="12" cy="12" rx="6.5" ry="2.6" transform="rotate(40 12 12)"/>
+          <circle class="core" cx="12" cy="12" r="1.7"/>
+          <circle cx="20" cy="8" r="1.1"/>
+          <circle cx="7" cy="17" r="1.1"/>
+          <circle cx="15" cy="19" r="1.1"/>
+          <line x1="12" y1="12" x2="20" y2="8" opacity="0.5"/>
+          <line x1="12" y1="12" x2="7" y2="17" opacity="0.5"/>
+          <line x1="12" y1="12" x2="15" y2="19" opacity="0.5"/>
+        </svg>
+        <span class="alabel">The Professional</span>
+      </div>
+      <div class="atext">
+        <p>That same drive carried me into a career. I went to college for creative writing, but it wasn't for me at the time. I left in 1999 and started in IT support, because I knew how to fix computers. Back then my joke was, if you could spell "PC" you could get a job. I was made supervisor of the support team after only a few months, and went on to a well-known early Chicago consulting firm — Whittman-Hart — as one of the specialists on the help desk. I worked through Y2K and, for the first time, started working on projects alongside a project manager. Then a merger went sideways and the company folded.</p>
+        <p>I spent the next few years in support, and I was unhappy. I was stuck in neutral — making less than I had a few years before — and I could see automation starting to reshape the work. I realized I didn't love it enough to fight my way to the top of it.</p>
+        <p>What I actually wanted was to work with people, to use my creativity, and to build things instead of just fixing them. A conversation with Maria Dubov, founder of MMD Services, opened my eyes to jobs I'd never even heard of. And a friend gave me the best advice I ever got: if you really want to learn something, do it for free.</p>
+        <p>So I did. I took short-term contract work that didn't pay much but taught me the basics — technical writing, business analysis. I got in with a startup and learned product development from the ground up. I bounced around for a few years, gaining experience everywhere I could. Then a friend called: there's a crash coming, she said, get in somewhere permanent. She had an open role. I joined her at SurePayroll as a business analyst — and I was happy. I learned system and data analysis, QA, and how to develop against requirements. I became a manager, and I went out and earned my PMP.</p>
+        <p>Then came the trade-off no parent wants to make. I had a baby, and I was commuting to the northern suburbs with days I didn't see my boy at all. So when an opportunity came up to come back downtown, I took it — becoming the manager of the business analysis team at JPMorganChase. I learned how to scale for enterprise: audits, process improvement, program and portfolio management, architecture. The list goes on.</p>
+        <p>But I've always been a builder. So when I was offered the chance to create a department from scratch, I couldn't pass it up. I became a director in the pressure cooker of consulting — the kind of place where, as I used to say, one year of experience was worth three anywhere else. It was stressful and difficult, and I moved through different leadership roles as the market shifted. But I learned how to lead full-stack product teams doing cutting-edge work, I learned UX and CX and experiential design, and — most importantly — I learned how to manage clients. Along the way I got to build things most people never touch: a VR game, work with some of the highest-profile sports teams in the world, projects with two of the most famous hospitals in America. After ten years, I was ready to move on.</p>
+        <p>In 2024 I joined Vi as Director of Information Systems and Services. And I've never been happier — a great manager, a great team, a wonderful company. It's the best work of my career, and I'm exactly where I want to be.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CONVERGENCE: back to the center -->
+  <footer class="aconverge">
+    <div class="aline"></div>
+    <section class="alane">
+      <div class="alanehead">
+        <svg viewBox="0 0 24 24" class="aico">
+          <circle class="core" cx="12" cy="12" r="1.7"/>
+          <circle cx="12" cy="5" r="1" opacity="0.7"/>
+          <circle cx="12" cy="19" r="1" opacity="0.7"/>
+          <circle cx="5" cy="12" r="1" opacity="0.7"/>
+          <circle cx="19" cy="12" r="1" opacity="0.7"/>
+          <circle cx="7.5" cy="7.5" r="1" opacity="0.5"/>
+          <circle cx="16.5" cy="16.5" r="1" opacity="0.5"/>
+          <circle cx="16.5" cy="7.5" r="1" opacity="0.5"/>
+          <circle cx="7.5" cy="16.5" r="1" opacity="0.5"/>
+        </svg>
+        <h2>Where it comes back together.</h2>
+      </div>
+      <div class="atext">
+        <p>It all comes back to the center. I grew up on the south side of Chicago. My parents had a picture window in our kitchen, and every morning I'd eat breakfast looking out at the Sears Tower — at the time, the tallest building in the world. It was an amazing sight to wake up to. And now I work on the 84th floor, where I can see my parents' house from my office window.</p>
+        <p>The kid who took apart computers, and the man who builds things every day — they're the same person. The person and the professional were never really two sides at all. They were always one, coming back to where they started.</p>
+      </div>
+      <div class="acircle">I've come full circle.</div>
+    </section>
+  </footer>
+</div>
+</body></html>

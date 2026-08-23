@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#a5b4fc" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Central feather -->
+  <path d="M32 6 C34 20 34 40 32 56 C30 40 30 20 32 6"/>
+  <path d="M32 6 C24 14 20 24 20 34 C26 30 30 26 32 24"/>
+  <path d="M32 6 C40 14 44 24 44 34 C38 30 34 26 32 24"/>
+  <!-- Left feather -->
+  <path d="M16 14 C18 26 18 44 16 58 C14 44 14 26 16 14"/>
+  <path d="M16 14 C11 20 8 28 8 36 C12 32 14 30 16 28"/>
+  <!-- Right feather -->
+  <path d="M48 14 C50 26 50 44 48 58 C46 44 46 26 48 14"/>
+  <path d="M48 14 C53 20 56 28 56 36 C52 32 50 30 48 28"/>
+  <!-- Shaft detail lines -->
+  <path d="M32 20 L32 50"/>
+  <path d="M16 24 L16 52"/>
+  <path d="M48 24 L48 52"/>
+</svg>
