@@ -22,7 +22,3 @@ AI locally — including the parts that don't work.
 - **Teaching** — webinars, writing, and content that demystifies the stack
 - **Building in public** — the real work, not the highlight reel
 
-### This site
-
-The icon set on this site is built from my tattoos — each section anchors to
-a design I've put on my body, because this work is that personal to me.
