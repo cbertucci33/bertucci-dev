@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom DeepSeek Stack - Bertucci Development</title>
+<meta name="description" content="How we built a custom DeepSeek-V4 with vision and the inference provider to run it - a component composition, not weight averaging.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#090D12">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Bertucci Development"><meta property="og:title" content="Custom DeepSeek Stack - Bertucci Development"><meta property="og:description" content="How we built a custom DeepSeek-V4 with vision and the inference provider to run it - a component composition, not weight averaging."><meta property="og:url" content="https://bertucci.dev/project-deepseek.html">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Custom DeepSeek Stack - Bertucci Development"><meta name="twitter:description" content="How we built a custom DeepSeek-V4 with vision and the inference provider to run it - a component composition, not weight averaging.">
+<link rel="canonical" href="https://bertucci.dev/project-deepseek.html">
+<link rel="icon" type="image/svg+xml" href="assets/hex.svg"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Source+Serif+4:opsz,wght@8..60,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bertucci.css?v=20260826-04">
+</head><body class="pg-project">
+<div class="wrap">
+  <nav class="page-back"><a href="projects.html" class="backlink">← back to projects</a></nav>
+  <header class="page-head">
+      <div class="picon">
+        <svg viewBox="0 0 24 24" class="pico">
+          <circle class="core" cx="12" cy="12" r="1.6"/>
+          <path d="M 3 12 A 9 9 0 0 1 21 12"/>
+          <path d="M 5 12 A 7 7 0 0 1 19 12" opacity="0.7"/>
+          <path d="M 7 12 A 5 5 0 0 1 17 12" opacity="0.5"/>
+          <path d="M 12 3 L 12 21" opacity="0.35"/>
+        </svg>
+      </div>
+    <h1>Custom DeepSeek Stack</h1>
+    <div class="page-sub">A frontier-class model, rebuilt to our own specs and served on our own hardware.</div>
+  </header>
+
+  <div class="page-content">
+    <section class="psec">
+      <h2>Why this project exists</h2>
+      <p>This was never about building the fanciest thing for its own sake. It was about two hard problems, and neither one had a clean answer waiting for us.</p>
+      <p>First: DeepSeek-V4 didn't have vision, and the model is too big to run a separate vision model alongside it. Some people grafted on Kimi's vision tower, but that made the whole thing too big to serve comfortably. So I found a smaller vision tower made to graft onto it, and I did it.</p>
+      <p>Second: once we had a working DeepSeek model with vision, there was no inference provider built to run it. The grafting breaks speculative decoding - you're stuck at 10 tokens per second if you're lucky. So we had to build our own runner.</p>
+    </section>
+
+    <section class="psec">
+      <h2>The model</h2>
+      <p>We started from an abliterated DeepSeek checkpoint we were already running, and grafted a separate vision tower on top of it. The vision tower added less than 1 gigabyte in size. It worked - but there were a few points where the model wasn't as crisp in execution as I'd like.</p>
+      <p>Then a newer, much narrower abliteration came out. I didn't really care about having zero refusals - I cared about it executing well. So we grafted the same vision tower onto that newer base instead. The difference was real. It's hard to put a number on it, but orchestration, tooling, and coding all felt tighter. It was immediately more capable and coherent.</p>
+      <p>This is a component composition, not weight averaging. The language shards stay byte-identical to their source; the vision tower and projector load separately and the custom runtime inserts the image embeddings at the image token. The result is a vision-capable model we can actually serve.</p>
+      <div class="plinks">
+        <a href="https://huggingface.co/cbert33/DeepSeek-V4-Flash-0731-abliterated-vision" target="_blank" rel="noopener">Vision model v1 on Hugging Face</a>
+        <a href="https://huggingface.co/cbert33/DeepSeek-V4-Flash-0731-abliterated-vision-v2" target="_blank" rel="noopener">Vision model v2 on Hugging Face</a>
+      </div>
+    </section>
+
+    <section class="psec">
+      <h2>The runner</h2>
+      <p>Because no standard inference provider could run a grafted-vision DeepSeek, we built our own. That meant working inside the deep end of the pool: distributed inference on dual DGX Spark nodes, where the hard problems live.</p>
+      <p>The first version took a community fork of vLLM built for DeepSeek on this hardware as its base and patched in vision support. It worked. We then went back and rebuilt it from the same base, folding in every performance update from the leading DGX fork plus the vision patches, to get to a second version that was materially better.</p>
+      <p>We're not done. There are much newer versions of vLLM out now with better DeepSeek support and newer CUDA driver usage. We have a working version built on vanilla vLLM 27.2 with the specific DGX updates and the vision add-on folded in, running on the Marlin backend instead of the older one. It should be faster. We don't have enough data yet to know if that's actually true, so we're testing it before we claim anything.</p>
+      <div class="plinks">
+        <a href="https://github.com/cbertucci33/dgx-spark-vllm-deepseek-v4-vision" target="_blank" rel="noopener">Inference provider on GitHub</a>
+      </div>
+    </section>
+
+    <section class="psec">
+      <h2>The stack</h2>
+      <p>NVIDIA DGX Spark hardware (dual-node for the DeepSeek stack), custom vLLM builds for local inference, and a community fork of DeepSeek-V4 with a grafted vision tower. The runner is served through a custom vLLM overlay with the vision plugin and DeepSeek-specific tuning.</p>
+      <div class="plinks">
+        <a href="https://huggingface.co/cbert33/DeepSeek-V4-Flash-0731-abliterated-vision-v2" target="_blank" rel="noopener">Model on Hugging Face</a>
+        <a href="https://github.com/cbertucci33/dgx-spark-vllm-deepseek-v4-vision" target="_blank" rel="noopener">Inference provider on GitHub</a>
+      </div>
+    </section>
+
+    <section class="psec">
+      <h2>Status</h2>
+      <p>Active and evolving. Both models and the runner are live, and we're beta testing a newer version of the inference stack now.</p>
+    </section>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Bertucci Development</title>
+<meta name="description" content="Get in touch with Carmen Bertucci. A message lands straight in the inbox - no account, no sign-up.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#090D12">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Bertucci Development"><meta property="og:title" content="Contact | Bertucci Development"><meta property="og:description" content="Get in touch with Carmen Bertucci. A message lands straight in the inbox - no account, no sign-up."><meta property="og:url" content="https://bertucci.dev/contact.html">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Contact | Bertucci Development"><meta name="twitter:description" content="Get in touch with Carmen Bertucci. A message lands straight in the inbox - no account, no sign-up.">
+<link rel="canonical" href="https://bertucci.dev/contact.html">
+<link rel="icon" type="image/svg+xml" href="assets/hex.svg"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Source+Serif+4:opsz,wght@8..60,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bertucci.css?v=20260826-04">
+</head><body class="pg-contact">
+<div class="wrap">
+  <nav class="page-back"><a href="index.html" class="backlink">← back</a></nav>
+  <header class="page-head">
+    <h1>Get in touch</h1>
+    <div class="page-sub">Drop me a line - it lands straight in my inbox. No account, no sign-up, just a message.</div>
+  </header>
+
+  <form id="contact-form" action="https://formsubmit.co/ajax/cbhex11@gmail.com" method="POST" class="cform">
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="What's this about?">
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required placeholder="Write your message here…"></textarea>
+    </div>
+    <!-- honeypot: humans never see/fill this; bots do. FormSubmit discards it. -->
+    <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" class="btn btn-primary csubmit">Send it</button>
+    <div class="cstatus" id="status" role="status" hidden></div>
+  </form>
+</div>
+<script>
+const form = document.getElementById('contact-form');
+const status = document.getElementById('status');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  status.hidden = false;
+  status.textContent = 'Sending…';
+  status.className = 'cstatus';
+  const payload = {
+    name: data.get('name'),
+    email: data.get('email'),
+    subject: data.get('subject'),
+    message: data.get('message'),
+    _subject: 'Contact form: ' + (data.get('subject') || '(no subject)'),
+    _template: 'table',
+    _captcha: 'true'
+  };
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/cbhex11@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const ok = res.ok;
+    if (ok) {
+      status.textContent = 'Sent. Thanks - I’ll get back to you.';
+      status.classList.add('ok');
+      form.reset();
+    } else {
+      status.textContent = 'Something went wrong sending. Try again?';
+      status.classList.add('err');
+    }
+  } catch (err) {
+    status.textContent = 'Could not reach the form service. Try again?';
+    status.classList.add('err');
+  }
+});
+</script>
+</body></html>

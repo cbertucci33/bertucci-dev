@@ -1,13 +1,9 @@
 # bertucci.dev
 
-Carmen Bertucci's personal site. Built on Jekyll, deployable to GitHub Pages.
+Personal site source for bertucci.dev, served on GitHub Pages.
 
-## Structure
+- Live: https://www.bertucci.dev/
+- Repo is the live site only (pages, css, assets, CNAME). Design-system reference
+  work lives in the private bertucci-design-system repo.
 
-- `index.html` — home
-- `about.md` — about
-- `projects/` — projects
-- `blog/` — writing
-- `contact.md` — contact
-- `assets/` — css / js / icons / img
-- `_layouts/`, `_includes/` — Jekyll templates
+Deploy: push to main, GitHub Pages rebuilds automatically.
