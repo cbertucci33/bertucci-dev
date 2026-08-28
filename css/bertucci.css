@@ -670,6 +670,7 @@ body.pg-projects .pcard:hover{border-color:var(--border-strong);transform:transl
 body.pg-projects .pcard-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
 body.pg-projects .pcard h2{font-family:var(--font-display);font-weight:520;font-size:1.4rem;color:var(--text-1);letter-spacing:-0.01em;text-decoration:none;}
 body.pg-projects .pstatus{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:var(--r-pill);padding:4px 12px;white-space:nowrap;}
+body.pg-projects .pstatus.is-hold{color:var(--text-3);border-color:var(--border);}
 body.pg-projects .pdesc{font-size:1rem;color:var(--text-2);line-height:1.7;margin-bottom:18px;text-decoration:none;}
 body.pg-projects .ptags{display:flex;flex-wrap:wrap;gap:8px;}
 body.pg-projects .ptags span{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:.05em;color:var(--text-3);background:var(--surface-raised);border:1px solid var(--border);border-radius:var(--r-pill);padding:3px 10px;}
