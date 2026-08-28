@@ -597,6 +597,14 @@ body.pg-writing .wart-date{font-family:var(--font-mono);font-size:0.85rem;letter
 body.pg-writing .wart-body p{font-size:1.125rem;line-height:1.75;color:#C9C3B4;margin-bottom:20px;}
 body.pg-writing .wart-body h2{font-family:var(--font-display);font-weight:520;font-size:clamp(1.3rem,2.5vw,1.7rem);color:#E8E2D6;letter-spacing:-0.01em;margin:36px 0 14px;}
 body.pg-writing .wart-body h2:first-child{margin-top:0;}
+body.pg-writing .wart-body ul, body.pg-writing .wart-body ol{padding-left:var(--sp-5);margin:0 0 20px;}
+body.pg-writing .wart-body ul li, body.pg-writing .wart-body ol li{font-size:1.125rem;line-height:1.75;color:#C9C3B4;margin-bottom:8px;}
+body.pg-writing .wart-body ul li:last-child, body.pg-writing .wart-body ol li:last-child{margin-bottom:0;}
+body.pg-writing .wart-body ul{list-style:disc;}
+body.pg-writing .wart-body ol{list-style:decimal;}
+body.pg-writing .wart-body ul.wrefs{list-style:none;padding-left:0;margin-top:8px;}
+body.pg-writing .wart-body ul.wrefs li{margin-bottom:10px;line-height:1.6;}
+
 
 /* overlay */
 body.pg-writing .woverlay{display:none;}
