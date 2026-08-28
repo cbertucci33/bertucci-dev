@@ -197,6 +197,25 @@ hr, .divider { border: none; border-top: 1px solid var(--border); margin: var(--
             stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 .icon .core { fill: currentColor; stroke: none; }
 
+/* ---------- 10b. SOCIAL / EXTERNAL LINKS ----------
+   Shared component for linking out to profiles (LinkedIn, GitHub, HF).
+   Uses the established brand marks + color roles: teal (bridge) default,
+   amber (focus) on hover. Solid marks inherit currentColor. */
+.soclinks{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+.soclinks .soc{
+  display:inline-flex;align-items:center;gap:11px;
+  font-family:var(--font-mono);font-size:0.85rem;letter-spacing:.04em;
+  color:var(--teal);text-decoration:none;
+  border:1px solid var(--border-strong);border-radius:var(--r-pill);
+  padding:10px 18px;
+  transition:color .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
+}
+.soclinks .soc:hover{color:var(--amber);border-color:var(--amber);transform:translateY(-1px);}
+.soclinks .soc svg{width:18px;height:18px;fill:currentColor;stroke:none;flex:none;}
+.soclinks .soc .core{fill:currentColor;stroke:none;}
+@media (max-width:819px){ .soclinks .soc{font-size:0.9rem;} }
+
+
 /* ---------- 11. MOBILE READABILITY FLOOR (< 820px) ----------
    Raise anything below the floor. Body stays >=16, secondary >=14,
    captions/labels >=12. Sizes above the floor are left alone. */
