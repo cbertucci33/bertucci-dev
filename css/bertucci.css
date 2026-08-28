@@ -213,6 +213,7 @@ hr, .divider { border: none; border-top: 1px solid var(--border); margin: var(--
 .soclinks .soc:hover{color:var(--amber);border-color:var(--amber);transform:translateY(-1px);}
 .soclinks .soc svg{width:18px;height:18px;fill:currentColor;stroke:none;flex:none;}
 .soclinks .soc .core{fill:currentColor;stroke:none;}
+.soclinks .socline{font-size:1rem;color:var(--text-2);margin-top:14px;line-height:1.6;}
 @media (max-width:819px){ .soclinks .soc{font-size:0.9rem;} }
 
 
