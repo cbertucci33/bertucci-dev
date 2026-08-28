@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ClearPing - Bertucci Development</title>
-<meta name="description" content="ClearPing - automatic background removal with a full editing workflow. Built on React, Supabase, and Vercel. A proof of concept for agentic product development.">
+<meta name="description" content="ClearPing - automatic background removal with a full editing workflow and admin capability. A proof of concept for full product delivery using agents. Currently on hold.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#090D12">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Bertucci Development"><meta property="og:title" content="ClearPing - Bertucci Development"><meta property="og:description" content="ClearPing - automatic background removal with a full editing workflow."><meta property="og:url" content="https://bertucci.dev/project-clearping.html">
-<meta name="twitter:card" content="summary"><meta name="twitter:title" content="ClearPing - Bertucci Development"><meta name="twitter:description" content="ClearPing - automatic background removal with a full editing workflow.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Bertucci Development"><meta property="og:title" content="ClearPing - Bertucci Development"><meta property="og:description" content="ClearPing - automatic background removal with a full editing workflow and admin capability. Currently on hold."><meta property="og:url" content="https://bertucci.dev/project-clearping.html">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="ClearPing - Bertucci Development"><meta name="twitter:description" content="ClearPing - automatic background removal with a full editing workflow and admin capability. Currently on hold.">
 <link rel="canonical" href="https://bertucci.dev/project-clearping.html">
 <link rel="icon" type="image/svg+xml" href="assets/hex.svg"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Source+Serif+4:opsz,wght@8..60,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -24,46 +24,39 @@
         </svg>
       </div>
     <h1>ClearPing</h1>
-    <div class="page-sub">Automatic background removal with a full editing workflow, built on our own spec and stack.</div>
+    <div class="page-sub">Automatic background removal with a full editing workflow and admin capability. Live on the web at <a href="https://clearping.app" target="_blank" rel="noopener">clearping.app</a>.</div>
   </header>
 
-  <div class="page-content">
+    <div class="page-content">
     <section class="psec">
       <h2>What it is</h2>
-      <p>ClearPing does one thing well: takes an image with an unwanted background, removes it, and hands back a clean transparent PNG. From there it has a full workflow to edit the result - so you're not stuck with a one-click output you can't refine. It's deliberately narrow. It is not a full design tool, and it isn't trying to become one.</p>
-      <p>Access is invite-only with a magic link sign in, which keeps the app clean and private by design. There's a separate admin surface for managing users and invites, with operational visibility over how the service is running.</p>
-      <div class="plinks">
-        <a href="https://clearping.app" target="_blank" rel="noopener">Visit ClearPing</a>
-      </div>
-    </section>
-
-    <section class="psec">
-      <h2>The product</h2>
-      <p>Release 1 is a narrow internal proof of concept: automated background removal, preview, download, strict temporary-file cleanup, and a small admin surface for access control and operational visibility.</p>
-      <p>Release 2 is the first real-user-testing release. It adds an editing layer - remove or restore specific regions, with a responsive editor that changes layout by screen size. Desktop uses a focused zoom canvas; mobile uses a bottom-sheet layout. Every edit request is validated locally before it hits the worker, and each selected area is saved as its own edit with a final "send all edits" step. The goal is a light, focused experience, not a broad photo editor.</p>
-    </section>
-
-    <section class="psec">
-      <h2>How it's built</h2>
-      <p>The stack was chosen for fast execution, quality, and low operational overhead: React + TypeScript + Vite frontend with separate user and admin entry points, Supabase for magic-link auth, Postgres, and minimal temporary object storage, Vercel for thin API orchestration, and a provider adapter layer for the background-removal engine.</p>
-      <p>The product policy is private by default: no retained file storage, temporary assets deleted aggressively after download, untouched assets cleaned up after 20 minutes, short-lived signed URLs, and no raw images in logs. Accept JPG, PNG, WEBP under 10 MB. Keep it narrow.</p>
-      <p>This was built the way I want to keep building: the full product requirements and technical design were written in Notion first, then built with agents handling the heavy lifting. Automated testing ran through Playwright, followed by a manual QA cycle.</p>
+      <p>ClearPing does one thing and attempts to do that well: takes an image with an unwanted background, removes it, and hands back a clean transparent PNG. From there it has a full workflow to edit the result - so you're not stuck with a one-click output you can't refine. It's deliberately narrow. It is not a full design tool, and it isn't trying to become one.</p>
+      <p>Access is invite-only with a magic link sign in, which keeps the web app clean and private by design. There's a separate admin surface for managing users and invites, with operational visibility over how the service is running and full usage statistics.</p>
     </section>
 
     <section class="psec">
       <h2>Why it exists</h2>
-      <p>The purpose here was never just to ship a background-removal tool. ClearPing is the proving ground for a way of working - spec it fully, build it end to end with agents doing the heavy lifting, and own the result. It's still in progress, and it's exactly the kind of project that shows how I work.</p>
+      <p>This project was a proof of concept to see if I could do full product delivery using agents. But not through typical personal vibe coding; this implemented a full dev cycle similar to what I've managed at work. Additionally I wanted to prove out my ability to create a full web app solely on my own. If I could take a specific product idea and build it, then I would have a blueprint for future projects with learnings.</p>
     </section>
 
     <section class="psec">
-      <h2>The stack</h2>
-      <p>React + TypeScript + Vite frontend, Supabase for auth and Postgres, Vercel for serverless API hosting, Resend for email, and a provider adapter layer for the background-removal engine. Hosted across Vercel and Oracle.</p>
+      <h2>The product</h2>
+      <p>Release 1 was a narrow internal proof of concept: automated background removal, preview, download, strict temporary-file cleanup, and a small admin surface for access control and operational visibility.</p>
+      <p>Release 2 was the first real-user-testing release. It adds an editing layer - remove or restore specific regions, with a responsive editor that changes layout by screen size. Desktop uses a focused zoom canvas; mobile uses a bottom-sheet layout. Every edit request is validated locally before it hits the worker, and each selected area is saved as its own edit with a final "send all edits" step. The goal is a light, focused experience, not a broad photo editor.</p>
+      <p>Release 3 was a UX overhaul for the image editing journey. This release hit a product blocker - we were sacrificing a good user experience to try to work around image editing libraries that weren't giving us the functionality we needed. We spent more time fighting the tech than moving the product forward. Our real problem here is I didn't want to pour a lot of money into this project, and the access costs for API's for more powerful image editing just isn't warranted. This release hasn't yet made it to production.</p>
+    </section>
+
+    <section class="psec">
+      <h2>How it's built / the stack</h2>
+      <p>The stack was chosen for fast execution, quality, and low operational overhead: React + TypeScript + Vite frontend with separate user and admin entry points, Supabase for magic-link auth, Postgres, and minimal temporary object storage, Vercel for app hosting, and Oracle for API orchestration with a provider adapter layer for the background-removal engine. All code is stored in GitHub with automated deployments to Vercel and Oracle.</p>
+      <p>The product policy is private by default: no retained file storage, temporary assets deleted aggressively after download, untouched assets cleaned up after 20 minutes, short-lived signed URLs, and no raw images in logs. Accept JPG, PNG, and WEBP under 10 MB.</p>
+      <p>Full product requirements and technical design were written in Notion first, then built with agents handling the heavy lifting. Mockups were provided by agents for each screen before building. We tracked each task on a board and had one orchestrator agent defining architecture and handing off coding tasks to two other agents. Automated testing first ran via CLI, then via browser automation through Playwright, followed by a manual UAT cycle.</p>
     </section>
 
     <section class="psec">
       <h2>Status</h2>
-      <p>On Hold. Release 1 is in place as a proof of concept and Release 2 was being shaped for real-user testing, but the project is shelved for now.</p>
+      <p>Currently on hold. I proved out the workflow and being able to create an entire application with a backend, so I achieved my initial goals. I may come back to it at some point, but this might have to wait until better open source image editing libraries exist to get the UX I am looking for.</p>
     </section>
   </div>
 </div>
-</body></html>
+</body>
