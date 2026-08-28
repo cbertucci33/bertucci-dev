@@ -201,19 +201,19 @@ hr, .divider { border: none; border-top: 1px solid var(--border); margin: var(--
    Shared component for linking out to profiles (LinkedIn, GitHub, HF).
    Uses the established brand marks + color roles: teal (bridge) default,
    amber (focus) on hover. Solid marks inherit currentColor. */
-.soclinks{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+.soclinks{display:flex;flex-wrap:wrap;gap:var(--sp-3);margin-top:var(--sp-6);margin-bottom:var(--sp-5);}
 .soclinks .soc{
-  display:inline-flex;align-items:center;gap:11px;
+  display:inline-flex;align-items:center;gap:var(--sp-3);
   font-family:var(--font-mono);font-size:0.85rem;letter-spacing:.04em;
   color:var(--teal);text-decoration:none;
   border:1px solid var(--border-strong);border-radius:var(--r-pill);
-  padding:10px 18px;
+  padding:var(--sp-3) var(--sp-5);
   transition:color .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease);
 }
 .soclinks .soc:hover{color:var(--amber);border-color:var(--amber);transform:translateY(-1px);}
 .soclinks .soc svg{width:18px;height:18px;fill:currentColor;stroke:none;flex:none;}
 .soclinks .soc .core{fill:currentColor;stroke:none;}
-.soclinks .socline{font-size:1rem;color:var(--text-2);margin-top:14px;line-height:1.6;}
+.soclinks + .socline{font-size:1.05rem;color:var(--text-2);margin-top:var(--sp-5);margin-bottom:var(--sp-5);line-height:1.6;}
 @media (max-width:819px){ .soclinks .soc{font-size:0.9rem;} }
 
 
